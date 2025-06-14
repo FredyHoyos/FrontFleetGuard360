@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import { UserPlus } from "lucide-react";
+import { FolderClock } from 'lucide-react';
 import DriversTable from "@/components/DriversTable";
 
 export default function AdminPage() {
@@ -150,7 +151,14 @@ export default function AdminPage() {
               Gestiona la información de los conductores registrados en el sistema.
             </p>
           </div>
-          <div className="hidden lg:block">
+          <div className="flex flex-row gap-4">
+            <button
+              className="cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
+              onClick={() => router.push("/turnos")}
+            >
+              Gestion de turnos
+              <FolderClock  size={20} />
+            </button>
             <button
               className="cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
               onClick={handleEditProfile}
