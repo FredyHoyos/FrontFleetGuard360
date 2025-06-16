@@ -12,18 +12,28 @@ const HOURS = Array.from({ length: 48 }, (_, i) => {
   return `${hour}:${min}`;
 });
 
-const DAYS = ["06/15", "06/20", "07/03", "07/10", "07/20"];
+interface FormState {
+  driver: string;
+  copilot: string;
+  route: string;
+  hour: string;
+  day: string;
+}
+
+interface FormErrors {
+  [key: string]: string | undefined;
+}
 
 export default function AddShift() {
   const router = useRouter();
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormState>({
     driver: "",
     copilot: "",
     route: "",
     hour: "",
     day: "",
   });
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [success, setSuccess] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
 
@@ -33,7 +43,7 @@ export default function AddShift() {
   };
 
   const validate = () => {
-    const newErrors: any = {};
+    const newErrors: FormErrors = {};
     if (!form.driver) newErrors.driver = "Campo obligatorio";
     if (!form.route) newErrors.route = "Campo obligatorio";
     if (!form.hour) newErrors.hour = "Campo obligatorio";

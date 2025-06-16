@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { ArrowLeft } from "lucide-react"; 
 
 
 
@@ -91,6 +92,10 @@ export default function Agregar() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { id, value } = e.target;
         setFormData((prev: FormData) => ({ ...prev, [id]: value }));
+    };
+
+    const goBack = () => {
+        router.back();
     };
 
     const handleSubmit = async () => {
@@ -199,6 +204,7 @@ export default function Agregar() {
             setMessage("Error de red al registrar el conductor.");
         }
     };
+    
 
 
     return (
@@ -213,7 +219,11 @@ export default function Agregar() {
                 </div>
 
                 <div className="bg-white rounded-lg shadow-sm overflow-hidden p-8">
-                    <div className="flex justify-end mb-10">
+                    <div className="flex justify-between mb-10">
+                        <div className="flex items-center justify-start">
+                            <ArrowLeft className="w-5 h-5 mr-1  cursor-pointer" onClick={goBack}/>
+                            <h2 className="text-2xl font-bold text-gray-800">Agregar empleado</h2>
+                        </div>
                         <button className="cursor-pointer rounded-md bg-primary py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700" onClick={handleSubmit}>
                             Agregar
                         </button>

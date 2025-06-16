@@ -19,6 +19,22 @@ const shifts = [
     myAssignment: false,
   },
   {
+    route: "A46",
+    driver: currentUser,
+    copilot: "N/A",
+    time: "8:00",
+    day: "06/02",
+    myAssignment: true,
+  },
+  {
+    route: "A47",
+    driver: "Ana Lopez",
+    copilot: currentUser,
+    time: "9:00",
+    day: "06/02",
+    myAssignment: true,
+  },
+  {
     route: "B14",
     driver: "Carlos Lopez",
     copilot: "Alejandro Cataño",
@@ -63,10 +79,13 @@ export default function ShiftsPage() {
     router.push('/addShift');
   };
 
+  const goBack = () => {
+    router.push('/admin');
+  };
+
   const handleEditShift = (route: string) => {
     //TODO: Petición para obtener turno con ruta como ID
-    //router.push(`/editShift/${route}`);
-    router.push(`/editShift`);
+    router.push(`/editShift/${route}`);
   };
 
   return (
@@ -82,7 +101,8 @@ export default function ShiftsPage() {
               <p className="text-base text-gray-600">Organiza los turnos que tendran los conductores</p>
             </div>
             <div className="flex flex-row gap-3 items-center">
-              <button className="rounded border border-gray-500 bg-white text-gray-900 font-medium px-6 py-2 hover:bg-gray-200 transition">Volver</button>
+              <button className="rounded border border-gray-500 bg-white text-gray-900 font-medium px-6 py-2 hover:bg-gray-200 transition"
+              onClick={goBack}>Volver</button>
               <button 
                 className="flex items-center gap-1 rounded bg-primary text-white font-semibold px-6 py-2 hover:bg-primary/80 transition"
                 onClick={handleAddShift}

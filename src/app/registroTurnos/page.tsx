@@ -1,9 +1,9 @@
 "use client"
 import Header from "@/components/Header";
-import { act, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { Driver } from "@/types/driver";
+/*import { useEffect } from "react";*/
+/*import { Driver } from "@/types/driver";*/
 import Graficar from "./Grafico/page";
 
 export default function RegistroTurnos() {
@@ -19,15 +19,21 @@ export default function RegistroTurnos() {
   };
 
 
-  const [admin, setAdmin] = useState<Driver | null>(null);
-  const [drivers, setDrivers] = useState<Driver[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [admin] = useState<Driver | null>(null);
+  /*const [drivers, setDrivers] = useState<Driver[]>([]);*/
+  /*const [loading, setLoading] = useState(true);*/
+  const [error] = useState<string | null>(null);
   const [controlPopUp, setControlPopUp] = useState(false);
 
   const mostrarPopUp = () => {
     setControlPopUp(!controlPopUp);
   };
+
+ const router = useRouter();
+  const goBack = () => {
+    router.back();
+  };
+
 
 
 
@@ -65,14 +71,14 @@ export default function RegistroTurnos() {
             Graficar
           </button>
           <button
-            className="cursor-pointer flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-md font-medium border border-gray-300">
+            className="cursor-pointer flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-md font-medium border border-gray-300 " onClick={goBack}>
             Volver
 
           </button>
         </div>
       </div>
       <div className="container mx-auto px-4 py-8 bg-white rounded-[15px]">
-        <div className="hidden lg:block">
+        <div className="">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="text-left text-sm font-semibold text-gray-700">
               <tr className="text-center">

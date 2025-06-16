@@ -1,5 +1,7 @@
 import React from "react";
 import { Driver } from "@/types/driver";
+import { FileText} from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ProfileCardProps {
   driver: Driver;
@@ -17,10 +19,25 @@ const ProfileItem = ({ label, value }: ProfileItemProps) => (
   </div>
 );
 
+
+
 const ProfileCard = ({ driver }: ProfileCardProps) => {
+  const router = useRouter();
+  const openInforme = () => {
+    router.push("/registroTurnos");
+  };
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden p-8">
       <div className="p-4">
+      <div className="flex items-center justify-start gap-2">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded flex items-center gap-2  cursor-pointer"
+            onClick={openInforme}>
+              <span>Informe</span>
+              <div className="flex items-center gap-1">
+                <FileText className="w-4 h-4" />
+              </div>
+            </button>
+            </div>
         <div className="flex flex-col items-center mb-6">
           <div className="relative mb-2">
             <div className="h-24 w-24 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
