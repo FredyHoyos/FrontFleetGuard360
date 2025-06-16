@@ -108,6 +108,10 @@ export default function AdminPage() {
     router.push("/agregar");
   };
 
+  const handleShifts = () => {
+    router.push("/shifts");
+  };
+
   if (checkingAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center text-gray-600">
@@ -154,7 +158,7 @@ export default function AdminPage() {
           <div className="flex flex-row gap-4">
             <button
               className="cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
-              onClick={() => router.push("/turnos")}
+              onClick={handleShifts}
             >
               Gestion de turnos
               <FolderClock  size={20} />
