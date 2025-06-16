@@ -5,8 +5,19 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import { ArrowLeft } from "lucide-react";
 
+// Form interfaces
+interface FormFields {
+  driver: string;
+  copilot: string;
+  route: string;
+  hour: string;
+  day: string;
+}
+
+
+
 //Datos ejemplo para edición de turno
-const shiftMock = {
+const shiftMock: FormFields = {
   driver: "Pablo Ramos",
   copilot: "Alejandro Naranjo",
   route: "A45",
@@ -21,17 +32,10 @@ const HOURS = Array.from({ length: 48 }, (_, i) => {
   return `${hour}:${min}`;
 });
 
-//Mostrar fecha formateada como mm/dd
-function formatDayToMMDD(dateStr: string) {
-  if (!dateStr) return "";
-  const [yyyy, mm, dd] = dateStr.split("-");
-  return `${mm}/${dd}`;
-}
-
-export default function EditShift() {
+  export default function EditShift() {
   const router = useRouter();
   const [form, setForm] = useState({ ...shiftMock });
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
 
@@ -40,8 +44,16 @@ export default function EditShift() {
     setErrors({ ...errors, [e.target.name]: undefined });
   };
 
+  interface FormErrors {
+    driver?: string;
+    copilot?: string;
+    route?: string;
+    hour?: string;
+    day?: string;
+  }
+
   const validate = () => {
-    const newErrors: any = {};
+    const newErrors: FormErrors = {};
     if (!form.driver) newErrors.driver = "Campo obligatorio";
     if (!form.route) newErrors.route = "Campo obligatorio";
     if (!form.hour) newErrors.hour = "Campo obligatorio";
