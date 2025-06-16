@@ -148,7 +148,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-gray-100">
       <Header userName={admin?.name || ""} role="Administrador" />
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex lg:justify-between  flex-col lg:flex-row items-center mb-6">
           <div>
             <h2 className="text-2xl font-bold text-gray-800">Panel de administración</h2>
             <p className="text-sm text-gray-600 mb-4">
