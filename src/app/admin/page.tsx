@@ -155,9 +155,9 @@ export default function AdminPage() {
               Gestiona la información de los conductores registrados en el sistema.
             </p>
           </div>
-          <div className="flex flex-row gap-4">
+          <div className="lg:flex hidden flex-row gap-4">
             <button
-              className="cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
+              className=" cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
               onClick={handleShifts}
             >
               Gestion de turnos
@@ -173,7 +173,14 @@ export default function AdminPage() {
           </div>
         </div>
         <DriversTable drivers={drivers} />
-        <div className="lg:hidden flex justify-center mb-6 p-4">
+        <div className="lg:hidden flex justify-between mb-6 p-4">
+        <button
+              className="cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
+              onClick={handleShifts}
+            >
+              Gestion de turnos
+              <FolderClock  size={20} />
+            </button>
           <button
             className="cursor-pointer flex items-center gap-2 bg-primary hover:bg-primary/70 text-white px-4 py-2 rounded-md font-medium"
             onClick={handleEditProfile}
