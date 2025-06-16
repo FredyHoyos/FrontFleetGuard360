@@ -115,7 +115,7 @@ const Login = () => {
 
               <form className="mt-4 w-full" onSubmit={handleInitialSubmit}>
                 <label className="mb-2 font-bold text-black block" htmlFor="email">
-                  Correo electrónico:
+                  Usuario:
                 </label>
                 <InputField
                   type="text"
@@ -144,7 +144,7 @@ const Login = () => {
                     className="cursor-pointer w-40 hover:bg-primary/80 transition-transform duration-200 hover:scale-105"
                     disabled={loading}
                   >
-                    Enviar código
+                    Ingresar
                   </Button>
                   <button
                       onClick={resetPassword}

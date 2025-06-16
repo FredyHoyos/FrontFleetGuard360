@@ -35,7 +35,7 @@ const HOURS = Array.from({ length: 48 }, (_, i) => {
   export default function EditShift() {
   const router = useRouter();
   const [form, setForm] = useState({ ...shiftMock });
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<Partial<FormFields>>({});
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
 
@@ -44,16 +44,10 @@ const HOURS = Array.from({ length: 48 }, (_, i) => {
     setErrors({ ...errors, [e.target.name]: undefined });
   };
 
-  interface FormErrors {
-    driver?: string;
-    copilot?: string;
-    route?: string;
-    hour?: string;
-    day?: string;
-  }
+
 
   const validate = () => {
-    const newErrors: FormErrors = {};
+    const newErrors: Partial<FormFields> = {};
     if (!form.driver) newErrors.driver = "Campo obligatorio";
     if (!form.route) newErrors.route = "Campo obligatorio";
     if (!form.hour) newErrors.hour = "Campo obligatorio";
